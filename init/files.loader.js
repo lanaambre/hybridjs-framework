@@ -1,14 +1,16 @@
 'use strict';
 
-const fs = require('fs');
+const fs   = require('fs');
+const path = require('path');
 
-function FilesLoader() {
+function FilesLoader(appPath) {
   let self = this;
 
   function init() {
+    self.appPath = appPath;
     self.libPrefix = __dirname + '/../lib/';
-    self.commonPrefix = __dirname + '/../../app/common/';
-    self.componentsPrefix = __dirname + '/../../app/components/';
+    self.commonPrefix = path.join(self.appPath, '/common/');
+    self.componentsPrefix = path.join(self.appPath, '/components/');
   }
 
   init();

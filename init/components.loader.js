@@ -1,15 +1,17 @@
 'use strict';
 
-const _ = require('lodash');
-const fs = require('fs');
-const yaml = require('js-yaml');
+const _      = require('lodash');
+const fs     = require('fs');
+const yaml   = require('js-yaml');
+const path   = require('path');
 const colors = require('colors');
 
-function ComponentsLoader() {
+function ComponentsLoader(appPath) {
   let self = this;
 
   function init() {
-    // Do Something
+    self.appPath = appPath;
+    self.componentPrefix = path.join(self.appPath, '/components/');
   }
 
   init();
@@ -18,7 +20,6 @@ function ComponentsLoader() {
   ///////
 
   self.components = {__error: false};
-  self.componentPrefix = __dirname + '/../../app/components/';
 
   /// Public Methods
   ///////

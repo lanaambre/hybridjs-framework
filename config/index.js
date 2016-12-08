@@ -3,10 +3,10 @@
 const yaml = require('js-yaml');
 const fs   = require('fs');
 
-function loadConfig() {
+function loadConfig(appFolder) {
   try {
     return yaml.safeLoad(
-      fs.readFileSync(__dirname + '/../../app/app.yml', 'utf8')
+      fs.readFileSync(appFolder + '/app.yml', 'utf8')
       );
   } catch (e) {
     console.log(e);
@@ -16,4 +16,4 @@ function loadConfig() {
   return files;
 };
 
-module.exports = loadConfig();
+module.exports = loadConfig;

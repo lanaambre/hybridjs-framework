@@ -1,20 +1,22 @@
 'use strict';
 
-const _ = require('lodash');
-const fs = require('fs');
-const yaml = require('js-yaml');
-const colors = require('colors');
+const _           = require('lodash');
+const fs          = require('fs');
+const yaml        = require('js-yaml');
+const path        = require('path');
+const colors      = require('colors');
 const FilesLoader = require('./files.loader.js');
 
-function Router(app, components, secret) {
+function Router(app, components, secret, appPath) {
   let self = this;
 
   function init() {
-    self.app = app;
+    self.app        = app;
+    self.secret     = secret;
+    self.appPath    = appPath;
     self.components = components;
-    self.secret = secret;
-    console.log('secret', secret);
-    self.componentPrefix = __dirname + '/../../app/components/';
+
+    self.componentPrefix = path.join(self.appPath, '/components/');
 
     self.loadedControllers = {};
     self.loadedMiddlewares = [];
@@ -23,7 +25,7 @@ function Router(app, components, secret) {
     self.success = 0;
     self.error = 0;
 
-    self.loader = new FilesLoader();
+    self.loader = new FilesLoader(self.appPath);
   }
 
   init();

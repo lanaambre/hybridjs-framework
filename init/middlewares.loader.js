@@ -1,17 +1,19 @@
 'use strict';
 
-const _ = require('lodash');
-const fs = require('fs');
-const yaml = require('js-yaml');
+const _      = require('lodash');
+const fs     = require('fs');
+const yaml   = require('js-yaml');
+const path   = require('path');
 const colors = require('colors');
 
-function MiddlewaresLoader() {
+function MiddlewaresLoader(appPath) {
   let self = this;
 
   function init() {
-    self.globalPrefix = '/../../app/common/middlewares/';
+    self.error        = 0;
+    self.appPath      = appPath;
+    self.globalPrefix = path.join(self.appPath, '/common/middlewares/');
     self.globalSuffix = '.middleware';
-    self.error = 0;
   }
 
   init();
