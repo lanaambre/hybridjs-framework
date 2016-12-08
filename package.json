@@ -1,0 +1,19 @@
+{
+  "name": "hybridjs",
+  "version": "0.0.1",
+  "description": "Hybrid.js framework",
+  "main": "hybrid.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Antoine-Demailly/hybridjs-framework.git"
+  },
+  "author": "Antoine Demailly <antoine.demailly@gmx.fr> (https://www.antoinedemailly.fr)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Antoine-Demailly/hybridjs-framework/issues"
+  },
+  "homepage": "https://github.com/Antoine-Demailly/hybridjs-framework#readme"
+}
