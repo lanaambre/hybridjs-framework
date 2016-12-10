@@ -35,7 +35,7 @@ function MiddlewaresLoader(appPath) {
       }
     });
 
-    return !self.error;
+    return self.error;
   }
 
   /// Private Methods
