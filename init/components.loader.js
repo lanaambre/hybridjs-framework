@@ -19,7 +19,8 @@ function ComponentsLoader(appPath) {
   /// Attributes
   ///////
 
-  self.components = {__error: false};
+  self.components = {};
+  self.globalLoadingError = false;
 
   /// Public Methods
   ///////
@@ -39,7 +40,7 @@ function ComponentsLoader(appPath) {
       self.components[component] = getComponent(component);
     });
 
-    return self.components;
+    return [self.components, self.globalLoadingError];
   }
 
   /// Private Methods
@@ -62,7 +63,7 @@ function ComponentsLoader(appPath) {
       componentMessage.push('ERROR'.red);
       console.log(componentMessage.join(''));
       routes = false;
-      self.components.__error = true;
+      self.globalLoadingError = true;
     }
 
     if (routes) {

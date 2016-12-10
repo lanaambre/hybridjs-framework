@@ -62,9 +62,9 @@ function Kernel(originDir) {
     // Load components
     let componentsConfig = self.config.dependencies.components;
     const componentsLoader = new ComponentsLoader(self.appPath);
-    let components = componentsLoader.load(componentsConfig);
+    let [components, err] = componentsLoader.load(componentsConfig);
 
-    if (components.__error) {
+    if (err) {
       console.log('\nError during components loading'.red);
       return;
     }
