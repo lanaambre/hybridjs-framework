@@ -7,12 +7,11 @@ const path        = require('path');
 const colors      = require('colors');
 const FilesLoader = require('./files.loader.js');
 
-function Router(app, components, secret, appPath) {
+function Router(app, components, appPath) {
   let self = this;
 
   function init() {
     self.app        = app;
-    self.secret     = secret;
     self.appPath    = appPath;
     self.components = components;
 

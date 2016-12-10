@@ -70,7 +70,7 @@ function Kernel(originDir) {
     }
 
     // Init Routes and then launch server
-    const router = new Router(self.app, components, self.config.app.secret, self.appPath);
+    const router = new Router(self.app, components, self.appPath);
     let appIsLoad = router.generate();
 
     // Launch Server
