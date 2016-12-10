@@ -13,9 +13,9 @@ const options   = require('./config/options');
 const loadAppConfig = require('./config');
 
 // Require file dependencies
-const ComponentsLoader    = require('./init/components.loader.js');
-const MiddlewaresLoader   = require('./init/middlewares.loader.js');
-const Router              = require('./init/router');
+const ComponentsLoader    = require('./core/components.loader.js');
+const MiddlewaresLoader   = require('./core/middlewares.loader.js');
+const Router              = require('./core/router');
 const reqLoggerMiddleware = require('./tools/req.logger.middleware.js');
 
 // Kernel class
@@ -52,9 +52,9 @@ function Kernel(originDir) {
 
     // Initialize global middlewares
     let middlewaresLoader = new MiddlewaresLoader(self.appPath);
-    let middlewaresOk = middlewaresLoader.global(self.app, middlewaresConfig);
+    let middlewaresErr = middlewaresLoader.global(self.app, middlewaresConfig);
 
-    if (!middlewaresOk) {
+    if (middlewaresErr) {
       console.log('\nError during global middlewares loading'.red);
       return;
     }
@@ -68,8 +68,6 @@ function Kernel(originDir) {
       console.log('\nError during components loading'.red);
       return;
     }
-
-    delete components.__error;
 
     // Init Routes and then launch server
     const router = new Router(self.app, components, self.config.app.secret, self.appPath);
